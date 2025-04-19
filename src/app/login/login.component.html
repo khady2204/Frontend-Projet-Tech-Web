@@ -1,9 +1,7 @@
-
-<div class="card">
-    <body class="card-body">
+<body class="card-body">
             <section>
                 <h2>SERVICE CENTRAL <br> D'AUTHENTIFICATION</h2>
-                <form>
+                <form #loginForm="ngForm" (ngSubmit)="login(loginForm)" >
                     <div class="mb-3">
                         <label for="Email">Email</label><br>
                         <input type="Email" name="userEmail" id="Email" class="form-control" placeholder="Email" ngModel>
@@ -20,4 +18,4 @@
                 <a href="/modifier-mdp-email" class="text" id="a">Mot de passe oublié?</a>
             </section>
     </body>
-    
+

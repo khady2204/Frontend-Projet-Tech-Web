@@ -1,0 +1,57 @@
+<body class="card-body">
+        <div>
+            <form>
+                <div class="mb-3">
+                    <label for="Name">Nom</label><br>
+                    <input type="text" name="userLastName" class="form-control" placeholder="Nom" ngModel required>
+                </div>
+                <div class="mb-3">
+                    <label for="FirtName">Prenom</label><br>
+                    <input type="text" name="userFirstName" class="form-control" placeholder="Prenom" ngModel required>
+                </div>
+                <div class="mb-3">
+                    <label for="Email">Email</label><br>
+                    <input type="Email" name="userEmail" class="form-control" placeholder="Email" ngModel required>
+                </div>
+                <div class="mb-3">
+                    <label for="Password">Mot de passe</label><br>
+                    <input type="Password" name="userPassword" class="form-control" placeholder="Mdp" ngModel required>
+                </div>
+                <div class="mb-3">
+                    <label for="dateNaissance" class="form-label">Date de naissance</label>
+                    <input type="date" id="dateNaissance" class="form-control" name="dateNaissance" ngModel required>
+                </div>
+                <div class="mb-3">
+                    <label for="formation" class="form-label">Formation</label>
+                    <input type="text" id="formation" class="form-control" name="formation" ngModel required>
+                </div>
+                <div class="mb-3">
+                    <label for="promo" class="form-label">Promo</label>
+                    <input type="text" id="promo" class="form-control" name="promo" ngModel required>
+                </div>
+              
+                <div class="mb-3">
+                    <label for="anneeDebut" class="form-label">Année de début</label>
+                    <input type="number" id="anneeDebut" class="form-control" name="anneeDebut"ngModel  required>
+                </div>
+              
+                <div class="mb-3">
+                    <label for="anneeSortie" class="form-label">Année de sortie</label>
+                    <input type="number" id="anneeSortie" class="form-control" name="anneeSortie" ngModel >
+                </div>
+                <div class="mb-3">
+                    <label for="diplomes" class="form-label">Diplômes</label>
+                    <input type="text" id="diplomes" class="form-control" name="diplomes" ngModel>
+                </div>
+                <div class="mb-3">
+                    <label for="autresFormations" class="form-label">Autres formations</label>
+                    <input type="text" id="autresFormations" class="form-control" name="autresFormations" ngModel>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-success form-control w-100 ">Enregistrer</button>
+                </div>
+            </form>
+        </div>
+</body>
+
+

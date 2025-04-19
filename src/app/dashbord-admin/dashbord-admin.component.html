@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">UNCHK</a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page">Accueil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" routerLink="gestion-etudiant" >Gestion des étudiants</a>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <button class="btn btn-outline-primary" type="submit">Deconnexion</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+  <body>
+    <div class="container-fluid p-5 bg-primary text-white rounded">
+      <h1>Bienvenue</h1>
+      <p>Sur la plateforme de gestion universitaire de l'UNCHK</p> 
+    </div>
+    <div class="container my-5">
+        <div class="text-center">
+          <h2 class="mb-3">Gestion des étudiants</h2>
+          <p class="lead text-black">
+            En tant qu'administrateur, vous pouvez enregistrer de nouveaux étudiants sur la plateforme.
+            Veuillez remplir le formulaire dédié pour ajouter leurs informations académiques et administratives.
+          </p>
+      
+          <a routerLink="/ajouter-etudiant" class="btn btn-primary btn-lg mt-3">
+            Enregistrer un étudiant
+          </a>
+        </div>
+      </div>
+      
+</body> 

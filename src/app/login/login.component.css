@@ -7,7 +7,7 @@ section{
     padding: 30px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     border-left: solid 10px  #cb6f29;
-}
+} 
 form{
     margin: 5% 10%;
     }
@@ -20,7 +20,7 @@ h2{
     margin-left: 300px;
 }
 body{
-    background-image: url('');
+    background-image: url('/assets/image/cas-bg.jpg');
     background-size: cover;
     justify-content: center;
     align-items: center;
