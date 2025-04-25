@@ -4,49 +4,73 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class UserAuthService {
-
   private readonly userIdkey = 'userId'; // Stocker l'userId dans le localStorage
 
   constructor() { }
-  public setRoles(roles:[]){
-    localStorage.setItem("roles", JSON.stringify(roles));
+
+  // Vérifie si l'environnement est un navigateur
+  private isBrowser(): boolean {
+    return typeof window !== 'undefined' && typeof localStorage !== 'undefined';
   }
 
-  public getRoles() : any[] {
-    const roles = localStorage.getItem('roles');
-    return roles ? JSON.parse(roles) : [];
+  public setRoles(roles: string[]): void {
+    if (this.isBrowser()) {
+      localStorage.setItem("roles", JSON.stringify(roles));
+    }
   }
 
-  public setToken(jwtToken: string) : void{
-    localStorage.setItem('jwtToken', jwtToken);
+  public getRoles(): any[] {
+    if (this.isBrowser()) {
+      const roles = localStorage.getItem('roles');
+      return roles ? JSON.parse(roles) : [];
+    }
+    return [];
   }
 
-  public getToken(): string{
-    const token = localStorage.getItem('jwtToken');
-    return token ? token : '';
+  public setToken(jwtToken: string): void {
+    if (this.isBrowser()) {
+      localStorage.setItem('jwtToken', jwtToken);
+    }
   }
 
-  public clear() {
-    localStorage.clear();
+  public getToken(): string {
+    if (this.isBrowser()) {
+      const token = localStorage.getItem('jwtToken');
+      return token ? token : '';
+    }
+    return '';
   }
 
-  public isLoggedIn() {
-    return this.getRoles() && this.getToken();
+  public clear(): void {
+    if (this.isBrowser()) {
+      localStorage.clear();
+    }
+  }
+
+  public isLoggedIn(): boolean {
+    return this.getRoles().length > 0 && this.getToken().length > 0;
   }
 
   // Stocke l'ID de l'utilisateur
   public setUserId(userId: string): void {
-    localStorage.setItem(this.userIdkey, userId);
+    if (this.isBrowser()) {
+      localStorage.setItem(this.userIdkey, userId);
+    }
   }
 
   // Récupère l'ID de l'utilisateur
   public getUserId(): string | null {
-    return localStorage.getItem(this.userIdkey);
+    if (this.isBrowser()) {
+      return localStorage.getItem(this.userIdkey);
+    }
+    return null;
   }
 
   // Supprime l'ID de l'utilisateur
   public removeUserId(): void {
-    localStorage.removeItem(this.userIdkey);
+    if (this.isBrowser()) {
+      localStorage.removeItem(this.userIdkey);
+    }
   }
 }
 

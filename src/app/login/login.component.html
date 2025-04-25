@@ -1,5 +1,4 @@
-<body class="card-body">
-            <section>
+<div class="card-body">
                 <h2>SERVICE CENTRAL <br> D'AUTHENTIFICATION</h2>
                 <form #loginForm="ngForm" (ngSubmit)="login(loginForm)" >
                     <div class="mb-3">
@@ -12,10 +11,9 @@
                     </div>
                     <div>
                         <br><br>
-                        <button type="submit" class="btn btn-success form-control">Se Connecter</button>
+                        <button type="submit" class="btn btn-primary form-control">Se Connecter</button>
                     </div>
                 </form>
                 <a href="/modifier-mdp-email" class="text" id="a">Mot de passe oublié?</a>
-            </section>
-    </body>
+</div>
 

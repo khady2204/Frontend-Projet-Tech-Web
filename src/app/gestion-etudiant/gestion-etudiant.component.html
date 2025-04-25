@@ -1,24 +1,51 @@
-<body>
-    <div class="container-fluid newAnnonce mt-5 pt-5">
-        
-        <a href="" class="btn buttonAnnonce">Inscrit un etudiant</a> 
-
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="gestion-etudiant">UNCHK</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="dashbord-admin">Accueil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" >Gestion des étudiants</a>
+        </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <button class="btn btn-outline-primary" type="submit">Deconnexion</button>
+      </form>
     </div>
-    <div class="container mt-5 pt-5">
-            <h2>Liste des Etudiants</h2>
+  </div>
+</nav>
+<div class="container mt-4">
+    <h3 class="text-center">Inscrire un étudiant</h3>
 
-        <table>
-        <thead>
-            <tr>
-            <th>Prenom</th>
-            <th>Nom</th>
-            <th>ID</th>
-            <th>Autres infos</th>
-            </tr>
-        </thead>
-            
-        </table>
-    </div>
-
-
-</body>
+  <button type="submit" class="btn btn-primary w-100" (click)="choose()">Ajouter</button>
+  
+    <hr>
+  
+    <h4 class="mt-4">Liste des étudiants</h4>
+    <table class="table table-bordered table-striped mt-3">
+      <thead class="table-primary">
+        <tr>
+          <th>Nom</th>
+          <th>Prénom</th>
+          <th>Email</th>
+          <th>Formation</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let etudiant of etudiants">
+          <td>{{ etudiant.userNom }}</td>
+          <td>{{ etudiant.userPrenom }}</td>
+          <td>{{ etudiant.userEmail }}</td>
+          <td>{{ etudiant.formations }}</td>
+          <td>
+            <button class="btn btn-primary btn-sm me-2" (click)="voirDetails(etudiant)">Voir details</button>
+            <button class="btn btn-info btn-sm me-2" [routerLink]="['/etudiants/modifier', etudiant.id]">Modifier</button>
+            <button class="btn btn-danger btn-sm" >Supprimer</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

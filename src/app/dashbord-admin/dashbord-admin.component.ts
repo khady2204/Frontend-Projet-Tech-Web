@@ -16,4 +16,7 @@ export class DashbordAdminComponent {
 
     private router : Router){}
 
+  choose(){
+  this.router.navigate(['/gestion-etudiant']);
+  }
 }

@@ -1,4 +1,4 @@
-section{
+.card-body{
     background: rgba(255, 255, 255, 0.497); /* Transparence */
     margin-left: 300px;
     margin-top: 50px;
@@ -6,21 +6,20 @@ section{
     width:800px;
     padding: 30px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    border-left: solid 10px  #cb6f29;
+    border-left: solid 10px  #172834;
 } 
 form{
     margin: 5% 10%;
     }
 h2{
     text-align: center;
-    color: green;
 }#a{
     font-size: 20px;
     color: #000000;
     margin-left: 300px;
 }
 body{
-    background-image: url('/assets/image/cas-bg.jpg');
+
     background-size: cover;
     justify-content: center;
     align-items: center;
