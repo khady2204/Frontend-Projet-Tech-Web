@@ -11,7 +11,7 @@
         </li>
       </ul>
       <form class="d-flex" role="search">
-        <button class="btn btn-outline-primary" type="submit">Deconnexion</button>
+        <button class="btn btn-outline-primary" type="submit" (click)="logout()">Deconnexion</button>
       </form>
     </div>
   </div>
@@ -43,7 +43,7 @@
           <td>
             <button class="btn btn-primary btn-sm me-2" (click)="voirDetails(etudiant)">Voir details</button>
             <button class="btn btn-info btn-sm me-2" [routerLink]="['/etudiants/modifier', etudiant.id]">Modifier</button>
-            <button class="btn btn-danger btn-sm" >Supprimer</button>
+            <button class="btn btn-danger btn-sm" (click)="supprimerEtudiant(etudiant.id)">Supprimer</button>
           </td>
         </tr>
       </tbody>

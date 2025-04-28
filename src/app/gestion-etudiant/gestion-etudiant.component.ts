@@ -23,6 +23,10 @@ export class GestionEtudiantComponent {
   }
 
   ngOnInit(): void {
+    this.loadEtudiants();
+  }
+
+  loadEtudiants(): void {
     this.userService.getEtudiants().subscribe(
       (data) => {
         this.etudiants = data;
@@ -39,6 +43,23 @@ export class GestionEtudiantComponent {
     );
   }
 
-   
+  supprimerEtudiant(id: number) {
+    if (confirm('Voulez-vous vraiment supprimer cet étudiant ?')) {
+        this.userService.deleteEtudiant(id).subscribe(() => {
+          alert("Étudiant supprimé avec succès ✅");
+          this.loadEtudiants(); // Recharge la liste après suppression
+        }, error => {
+          console.error("Erreur lors de la suppression :", error);
+          alert("Une erreur est survenue lors de la suppression ");
+        });
+      }
+    }
 
-}
+    logout() {
+      // Supprimer le token JWT du localStorage
+      localStorage.removeItem('jwtToken');
+      this.router.navigate(['/login']);
+    }
+
+  }
+

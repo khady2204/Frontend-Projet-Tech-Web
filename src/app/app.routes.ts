@@ -13,5 +13,5 @@ export const routes: Routes = [
     { path: 'gestion-etudiant' , component: GestionEtudiantComponent},
     { path: 'ajouter-etudiant' , component: AjouterEtudiantComponent},
     { path: 'dashbord-etudiant' , component: DashbordEtudiantComponent},
-    { path: 'etudiants/modifier/:id', component: ModifierEtudiantComponent }
+    { path: 'etudiants/modifier/:id', component: ModifierEtudiantComponent},
 ];

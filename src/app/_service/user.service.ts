@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, tap, throwError } from 'rxjs';
+import { catchError, Observable, of, tap, throwError } from 'rxjs';
 import { UserAuthService } from './user-auth.service';
 
 @Injectable({
@@ -22,31 +22,29 @@ RequestHeader=new HttpHeaders({
     }
     
     getEtudiants(): Observable<any[]> {
+      if (typeof window !== "undefined" && window.localStorage) {
       const token = localStorage.getItem('jwtToken');
       const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
       return this.httpclient.get<any[]>(`${this.PATH_OF_API}/api/users/etudiants`, { headers });
-    }
+      }else{return of([]);}
+  }
 
     public login(connectionData: { userEmail: string; userPassword: string }) : Observable<any>{
-  
-    
-        // Récupère le token JWT du localStorage (si déjà connecté)
-        const token = localStorage.getItem('jwtToken');
-    
-        // Ajoute le token à l'en-tête 'Authorization' si il existe
-        if (token) {
-          this.RequestHeader = this.RequestHeader.set('Authorization', `Bearer ${token}`);
-        }
-         return this.httpclient.post(
-          this.PATH_OF_API + "/api/auth/login", connectionData,
-          {headers: this.RequestHeader}).pipe(
-            // Lorsque la réponse arrive, on l'utilise pour stocker le token dans le localStorage
-            tap((response: any) => {
-              if (response && response.token) {
-                localStorage.setItem('jwtToken', response.token);
-              }
-            })
-          );
+      const noAuthHeader = new HttpHeaders({ "No-Auth": "True" });
+
+      return this.httpclient.post(
+        this.PATH_OF_API + "/api/auth/login", 
+        connectionData,
+        { headers: noAuthHeader }
+      ).pipe(
+        tap((response: any) => {
+          if (response && response.token) {
+            localStorage.setItem('jwtToken', response.token);
+          }
+        })
+      );
+       
+        
         }
       
     
@@ -78,4 +76,11 @@ RequestHeader=new HttpHeaders({
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.httpclient.put<any>(`${this.PATH_OF_API}/api/users/etudiants/${id}`, userData, { headers });
    }
+
+   deleteEtudiant(id: number): Observable<any> {
+    const token = localStorage.getItem('jwtToken');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  
+    return this.httpclient.delete<any>(`${this.PATH_OF_API}/api/users/etudiants/${id}`, { headers });
+  }
 }
