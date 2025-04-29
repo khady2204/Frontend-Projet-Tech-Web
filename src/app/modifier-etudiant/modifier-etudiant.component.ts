@@ -1,13 +1,19 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { UserService } from '../_service/user.service';
 import { UserAuthService } from '../_service/user-auth.service';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
 
 @Component({
   selector: 'app-modifier-etudiant',
-  imports: [FormsModule,
-    ReactiveFormsModule
+  imports: [FormsModule, RouterModule,
+    ReactiveFormsModule, MatToolbarModule,MatCardModule,MatDividerModule,
+    MatButtonModule, MatTableModule
   ],
   templateUrl: './modifier-etudiant.component.html',
   styleUrl: './modifier-etudiant.component.css'
@@ -59,5 +65,10 @@ onSubmit(): void {
   }
 }
 
+
+logout(): void {
+  this.userAuthService.logout();
+  this.router.navigate(['/login']);
+}
 
 }

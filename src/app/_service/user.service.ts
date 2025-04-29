@@ -38,8 +38,9 @@ RequestHeader=new HttpHeaders({
         { headers: noAuthHeader }
       ).pipe(
         tap((response: any) => {
-          if (response && response.token) {
+          if (response && response.token && response.user) {
             localStorage.setItem('jwtToken', response.token);
+            localStorage.setItem('userId', response.id);
           }
         })
       );
@@ -82,5 +83,11 @@ RequestHeader=new HttpHeaders({
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
   
     return this.httpclient.delete<any>(`${this.PATH_OF_API}/api/users/etudiants/${id}`, { headers });
+  }
+
+  getMonProfilEtudiant(): Observable<any> {
+    const token = localStorage.getItem('jwtToken');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.httpclient.get<any>(`${this.PATH_OF_API}/api/users/etudiant/me`, { headers });
   }
 }

@@ -1,13 +1,38 @@
 import { Injectable } from '@angular/core';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class UserAuthService {
+
   private readonly userIdkey = 'userId'; // Stocker l'userId dans le localStorage
 
-  constructor() { }
+  removeToken(): void {
+    if (this.isBrowser()) {
+      localStorage.removeItem('jwtToken');
+    }
+  }
+  
+  removeRoles(): void {
+    if (this.isBrowser()) {
+      localStorage.removeItem('roles');
+    }
+  }
+  
+  removeEmail(): void {
+    if (this.isBrowser()) {
+      localStorage.removeItem('userEmail');
+    }
+  }
 
+  logout(): void {
+    this.removeUserId();
+    localStorage.removeItem('jwtToken');
+    localStorage.removeItem('roles');
+    localStorage.removeItem('userEmail');
+  }
+  
   // Vérifie si l'environnement est un navigateur
   private isBrowser(): boolean {
     return typeof window !== 'undefined' && typeof localStorage !== 'undefined';

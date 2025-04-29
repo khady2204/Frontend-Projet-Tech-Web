@@ -1,23 +1,14 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand">UNCHK</a>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="dashbord-admin">Accueil</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="gestion-etudiant">Gestion des étudiants</a>
-        </li>
-      </ul>
-      <form class="d-flex" role="search">
-        <button class="btn btn-outline-primary" type="submit">Deconnexion</button>
-      </form>
-    </div>
+<mat-toolbar color="primary">
+  <div class="mat-toolbar-row">
+    <span class="navbar-brand">UNCHK</span>
+    <a mat-button routerLink="/dashbord-admin" class="nav-link">Accueil</a>
+    <a mat-button routerLink="/gestion-etudiant" class="nav-link">Gestion des étudiants</a>
+
+    <span class="spacer"></span> 
+
+    <button mat-raised-button color="warn" class="deconnexion-btn" (click)="logout()">Déconnexion</button>
   </div>
-</nav>
-
-
+</mat-toolbar>
 
 <body class="bg-light">
     <div class="container py-5">

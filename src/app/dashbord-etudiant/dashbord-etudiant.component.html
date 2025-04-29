@@ -1,11 +1,28 @@
 
 <mat-toolbar color="primary">
-    <span>Bienvenue, Abdoulaye 🎓</span>
-    <button mat-button>Accueil</button>
+    <span>Bienvenue, {{ etudiant?.userPrenom }} 🎓</span>
+    <button mat-button>Profil</button>
     <span style="flex: 1 1 auto;"></span>
-    <button mat-button>Mon Profil</button>
-    <button mat-button>Déconnexion</button>
+    <button mat-button color="warn" (click)="logout()" >Déconnexion</button>
   </mat-toolbar>
+
+  <div class="profil-container">
+    <mat-card class="profil-card mat-elevation-z4">
+      <mat-card-header>
+        <mat-card-title>Mon Profil</mat-card-title>
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <mat-card-content *ngIf="etudiant">
+        <p><strong>Nom :</strong> {{ etudiant.userNom }}</p>
+      <p><strong>Prénom :</strong> {{ etudiant.userPrenom }}</p>
+      <p><strong>Email :</strong> {{ etudiant.userEmail }}</p>
+      <p><strong>Filière :</strong> {{ etudiant.formations }}</p>
+      <p><strong>Promotion :</strong> {{ etudiant.promo }}</p>
+      <p><strong>Niveau :</strong> {{ etudiant.niveau }}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  
   
   
   

@@ -1,0 +1,18 @@
+.logo {
+  height: 40px;
+  margin-right: 16px;
+}
+
+
+
+.navbar-brand {
+    flex-grow: 0;
+  }
+  
+  .spacer {
+    flex: 1 ;
+  }
+  
+  .deconnexion-btn {
+    margin-left: auto; 
+  }

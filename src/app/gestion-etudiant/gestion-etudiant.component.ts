@@ -3,19 +3,28 @@ import { Component } from '@angular/core';
 import { UserService } from '../_service/user.service';
 import { Router, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatTableModule } from '@angular/material/table';
+import { UserAuthService } from '../_service/user-auth.service';
 
 @Component({
   selector: 'app-gestion-etudiant',
-  imports: [CommonModule, RouterModule, FormsModule],
+  imports: [CommonModule, RouterModule, FormsModule,MatToolbarModule,MatCardModule,MatDividerModule,
+      MatButtonModule, MatTableModule],
   templateUrl: './gestion-etudiant.component.html',
   styleUrl: './gestion-etudiant.component.css'
 })
 export class GestionEtudiantComponent {
 
   etudiants: any[] = [];
+  displayedColumns: string[] = ['userNom', 'userPrenom', 'userEmail', 'formations', 'actions'];
+
 
   constructor(private userService: UserService,
-    private router:Router
+    private router:Router, private userAuthService: UserAuthService
   ) {}
 
   choose(){

@@ -1,0 +1,11 @@
+.navbar-brand {
+    flex-grow: 0;
+  }
+  
+  .spacer {
+    flex: 1 ;
+  }
+  
+  .deconnexion-btn {
+    margin-left: auto; 
+  }

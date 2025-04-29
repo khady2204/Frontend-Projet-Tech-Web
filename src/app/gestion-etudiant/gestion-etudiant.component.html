@@ -1,51 +1,66 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="gestion-etudiant">UNCHK</a>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="dashbord-admin">Accueil</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" >Gestion des étudiants</a>
-        </li>
-      </ul>
-      <form class="d-flex" role="search">
-        <button class="btn btn-outline-primary" type="submit" (click)="logout()">Deconnexion</button>
-      </form>
-    </div>
-  </div>
-</nav>
-<div class="container mt-4">
-    <h3 class="text-center">Inscrire un étudiant</h3>
+<mat-toolbar color="primary">
+  <div class="mat-toolbar-row">
+    <span class="navbar-brand">UNCHK</span>
+    
+    <a mat-button routerLink="/dashbord-admin" class="nav-link">Accueil</a>
+    <a mat-button routerLink="/gestion-etudiant" class="nav-link">Gestion des étudiants</a>
 
-  <button type="submit" class="btn btn-primary w-100" (click)="choose()">Ajouter</button>
+    <span class="spacer"></span> 
+
+    <button mat-raised-button color="warn" class="deconnexion-btn" (click)="logout()">Déconnexion</button>
+  </div>
+</mat-toolbar>
+<div class="container mt-4">
+  <div class="text-center" >
+    <h3 >Enregistrer un nouvel étudiant</h3>
+  <button mat-raised-button color="primary"   (click)="choose()">ajouter</button>
+  </div>
   
-    <hr>
+    <mat-divider class="my-4"></mat-divider>
+
+    <mat-card class="p-4">
+      <h3>Liste des étudiants</h3>
   
-    <h4 class="mt-4">Liste des étudiants</h4>
-    <table class="table table-bordered table-striped mt-3">
-      <thead class="table-primary">
-        <tr>
-          <th>Nom</th>
-          <th>Prénom</th>
-          <th>Email</th>
-          <th>Formation</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let etudiant of etudiants">
-          <td>{{ etudiant.userNom }}</td>
-          <td>{{ etudiant.userPrenom }}</td>
-          <td>{{ etudiant.userEmail }}</td>
-          <td>{{ etudiant.formations }}</td>
-          <td>
-            <button class="btn btn-primary btn-sm me-2" (click)="voirDetails(etudiant)">Voir details</button>
-            <button class="btn btn-info btn-sm me-2" [routerLink]="['/etudiants/modifier', etudiant.id]">Modifier</button>
-            <button class="btn btn-danger btn-sm" (click)="supprimerEtudiant(etudiant.id)">Supprimer</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+      <div class="table-responsive">
+        <table mat-table [dataSource]="etudiants" class="mat-elevation-z8 w-100">
+  
+          <!-- Nom Column -->
+          <ng-container matColumnDef="userNom">
+            <th mat-header-cell *matHeaderCellDef> Nom </th>
+            <td mat-cell *matCellDef="let etudiant"> {{etudiant.userNom}} </td>
+          </ng-container>
+  
+          <!-- Prénom Column -->
+          <ng-container matColumnDef="userPrenom">
+            <th mat-header-cell *matHeaderCellDef> Prénom </th>
+            <td mat-cell *matCellDef="let etudiant"> {{etudiant.userPrenom}} </td>
+          </ng-container>
+  
+          <!-- Email Column -->
+          <ng-container matColumnDef="userEmail">
+            <th mat-header-cell *matHeaderCellDef> Email </th>
+            <td mat-cell *matCellDef="let etudiant"> {{etudiant.userEmail}} </td>
+          </ng-container>
+  
+          <!-- Formation Column -->
+          <ng-container matColumnDef="formations">
+            <th mat-header-cell *matHeaderCellDef> Formation </th>
+            <td mat-cell *matCellDef="let etudiant"> {{etudiant.formations}} </td>
+          </ng-container>
+  
+          <!-- Actions Column -->
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef> Actions </th>
+            <td mat-cell *matCellDef="let etudiant">
+              <button mat-button color="primary" (click)="voirDetails(etudiant)">Voir détails</button>
+              <button mat-button color="accent" [routerLink]="['/etudiants/modifier', etudiant.id]">Modifier</button>
+              <button mat-button color="warn" (click)="supprimerEtudiant(etudiant.id)">Supprimer</button>
+            </td>
+          </ng-container>
+  
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+    </mat-card>
   </div>

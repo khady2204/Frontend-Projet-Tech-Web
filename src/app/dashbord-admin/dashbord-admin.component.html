@@ -1,22 +1,14 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="">UNCHK</a>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page">Accueil</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="gestion-etudiant">Gestion des étudiants</a>
-          </li>
-        </ul>
-        <form class="d-flex" role="search">
-          <button class="btn btn-outline-primary" type="submit">Deconnexion</button>
-        </form>
-      </div>
-    </div>
-  </nav>
-  <body>
+<mat-toolbar color="primary">
+  <div class="mat-toolbar-row">
+    <span class="navbar-brand">UNCHK</span>
+    <a mat-button routerLink="/accueil" class="nav-link">Accueil</a>
+    <a mat-button routerLink="/gestion-etudiant" class="nav-link">Gestion des étudiants</a>
+
+    <span class="spacer"></span>
+
+    <button mat-raised-button color="warn" class="deconnexion-btn" (click)="logout()" >Déconnexion</button>
+  </div>
+</mat-toolbar>
     <div class="container-fluid p-5 bg-primary text-white rounded">
       <h1>Bienvenue</h1>
       <p>Sur la plateforme de gestion universitaire de l'UNCHK</p> 
@@ -29,10 +21,12 @@
             Veuillez remplir le formulaire dédié pour ajouter leurs informations académiques et administratives.
           </p>
       
-          <a routerLink="/ajouter-etudiant" class="btn btn-primary btn-lg mt-3">
+          <a routerLink="/ajouter-etudiant" class="btn-lg mt-3" mat-raised-button color="primary" >
             Enregistrer un étudiant
           </a>
         </div>
+        
       </div>
-      
-</body> 
+
+
+  

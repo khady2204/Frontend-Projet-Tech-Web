@@ -1,18 +1,29 @@
 import { Component } from '@angular/core';
-import { FormsModule, NgForm } from '@angular/forms';
+import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../_service/user.service';
 import { UserAuthService } from '../_service/user-auth.service';
 import { CommonModule } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
     selector: 'app-login',
     standalone: true,
-    imports: [FormsModule],
+    imports: [FormsModule, ReactiveFormsModule,MatCardModule,
+      MatFormFieldModule,
+      MatInputModule,
+      MatButtonModule,
+      MatIconModule],
     templateUrl: './login.component.html',
     styleUrl: './login.component.css'
 })
 export class LoginComponent {
+
+  hidePassword: boolean = true;
 
   constructor(private router: Router,
     private userService : UserService,
