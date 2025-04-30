@@ -34,8 +34,9 @@ export class ModifierEtudiantComponent {
 
   ngOnInit(): void {
     this.etudiantForm = this.fb.group({
-      userNom: ['', Validators.required],
+    userNom: ['', Validators.required],
     userPrenom: ['', Validators.required],
+    dateNaissance: ['',Validators.required],
     userEmail: ['', [Validators.required, Validators.email]],
     formations: ['', Validators.required],
     promo: ['', Validators.required],

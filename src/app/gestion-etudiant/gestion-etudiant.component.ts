@@ -9,11 +9,14 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatTableModule } from '@angular/material/table';
 import { UserAuthService } from '../_service/user-auth.service';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { DetailsEtudiantComponent } from '../details-etudiant/details-etudiant.component';
 
 @Component({
   selector: 'app-gestion-etudiant',
+  standalone: true,
   imports: [CommonModule, RouterModule, FormsModule,MatToolbarModule,MatCardModule,MatDividerModule,
-      MatButtonModule, MatTableModule],
+    MatDialogModule,MatButtonModule, MatTableModule],
   templateUrl: './gestion-etudiant.component.html',
   styleUrl: './gestion-etudiant.component.css'
 })
@@ -24,7 +27,7 @@ export class GestionEtudiantComponent {
 
 
   constructor(private userService: UserService,
-    private router:Router, private userAuthService: UserAuthService
+    private router:Router, private userAuthService: UserAuthService,private dialog: MatDialog 
   ) {}
 
   choose(){
@@ -46,10 +49,11 @@ export class GestionEtudiantComponent {
     );
   }
 
-  voirDetails(etudiant: any){
-    alert(`Nom: ${etudiant.userNom}\nPrénom: ${etudiant.userPrenom}\nEmail: ${etudiant.userEmail}\nFormation: ${etudiant.formations}
-          \nPromo: ${etudiant.promo}\nINE: ${etudiant.ine}\nNiveau: ${etudiant.niveau}\nAnnee: ${etudiant.annee}\nENO: ${etudiant.eno}`
-    );
+  voirDetails(etudiant: any) {
+    this.dialog.open(DetailsEtudiantComponent, {
+      width: '400px',
+      data: etudiant
+    });
   }
 
   supprimerEtudiant(id: number) {
